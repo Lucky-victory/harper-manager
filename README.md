@@ -13,7 +13,7 @@ var HarperManager=require("harper-manager");
 var options={
    host:process.env.db_host  /* your host url, ex: http://localhost:3000 or https://xxxxxx.harperdbcloud.com */,
    key:process.env.db_key  // your Basic auth token,
-   schema: "dog" // this is optional, you can skip it.
+   schema: "dog" /* this is optional, you can skip it. */
 }
 var myDB = new HarperManager(options);
 
@@ -38,14 +38,21 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
 - search by hash using the `searchByHash(options)` method.
 - search by values using the `searchByValues(options)` method.
 - search by conditions using the `searchByConditions(options)` method.
-
+- upload data using `.csvUrlLoad(options)` method.
 
 ## What you should know about HarperManager.
 
-- Every method returns a `Promise`.
+> **HarperManager** is not an extension to [harperdb](https://harperdb.io), you can only perform operations that are available by Harperdb.
+
+- Every method returns a `Promise`, this means you will need to use `.then()` and `.catch()` to get the response or errors.
 - the methods that requires options must be passed in as an Object `{}`.
 - you can insert data into a table not yet created, **HarperManager** will automatically create the table and insert the data for you.
-- 
 
+## Available methods and their options. 
+
+
+
+## Future Versions 
+ In future versions, **HarperManager** will include more methods and options.
 
 
