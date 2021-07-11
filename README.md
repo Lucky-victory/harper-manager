@@ -35,9 +35,9 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
 - upsert data using the `.upsert(options)` method.
 - update data using the `.update(options)` method.
 - delete data using the `.delete(options)` method.
-- search by hash using the `searchByHash(options)` method.
-- search by values using the `searchByValues(options)` method.
-- search by conditions using the `searchByConditions(options)` method.
+- search by hash using the `.searchByHash(options)` method.
+- search by values using the `.searchByValues(options)` method.
+- search by conditions using the `.searchByConditions(options)` method.
 - upload data using `.csvUrlLoad(options)` method.
 
 ## What you should know about HarperManager.
@@ -50,6 +50,68 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
 
 ## Available methods and their options. 
 
+> To better understand **HarperManager's** options, you should refer to the [harperdb docs](https://api.harperdb.io) page.
+
+- method:`describeDB()` | param: none.
+
+- method: `createSchema()` | param : Type- `string`  the name of the schema you want to create.
+
+- method: `dropSchema()` | param : Type- `string`  the name of the schema you want to drop.
+
+- method: `createTable()` | options : Type- `Object` 
+ schema:  *required*,
+  table: *required*
+  hashAttribute: *required* (if not specified, will default to id).
+
+- method: `dropTable()` | options : Type- `Object` 
+ schema:  *required*,
+  table: *required*.
+
+- method: `insert()` | options : Type- `Object` 
+  schema:  *required*
+  table: *required*
+  records:  *required* `
+
+- method: `delete()` | options : Type- `Object` 
+  schema:  *required*,
+  table: *required*,
+  hashValues: *required*.
+
+- method: `update()` | options : Type- `Object` 
+  schema:  *required*,
+  table: *required*,
+  records: *required*.
+
+- method: `upsert()` | options : Type- `Object` 
+  schema:  *required*,
+  table: *required*,
+  records: *required*.
+
+- method: `searchByHash()` | options: Type- `Object` 
+  schema:*required*,
+  table: *required*,
+ hashValues:*required*,
+ getAttributes: *required* (if not specified, will default to wildcard `["*"]``).
+
+- method: `searchByValues()` | options: Type- `Object`  
+  schema:*required*,
+  table: *required*,
+ searchValue:*required*,
+  searchAttribute:*required*,
+ getAttributes: *required* (if not specified, will default to wildcard `["*"]`).
+
+- method: `searchByConditions()` | options: Type- `Object`  
+  schema:*required*,
+  table: *required*,
+  operand: *optional* (will default to `"and"`)
+ offset:*optional* (will default to `0`),
+   limit:*optional* (will default to `null`),
+ getAttributes: *required* (if not specified, will default to wildcard ["*"]);
+
+- method: `csvUrlLoad()` | options : Type- `Object` 
+  schema:  *required*,
+  table: *required*,
+  csvUrl: *required*.
 
 
 ## Future Versions 
