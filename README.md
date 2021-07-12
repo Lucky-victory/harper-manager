@@ -13,7 +13,7 @@ var HarperManager=require("harper-manager");
 var options={
    host:process.env.db_host  /* your host url, ex: http://localhost:3000 or https://xxxxxx.harperdbcloud.com */,
    key:process.env.db_key  // your Basic auth token,
-   schema: "dog" /* this is optional, you can skip it. */
+   schema: "dog" /* this is optional. */
 }
 var myDB = new HarperManager(options);
 
@@ -91,7 +91,7 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
   schema:*required*,
   table: *required*,
  hashValues:*required*,
- getAttributes: *required* (if not specified, will default to wildcard `["*"]``).
+ getAttributes: *required* (if not specified, will default to wildcard `["*"]`).
 
 - method: `searchByValues()` | options: Type- `Object`  
   schema:*required*,
@@ -104,9 +104,9 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
   schema:*required*,
   table: *required*,
   operand: *optional* (will default to `"and"`)
- offset:*optional* (will default to `0`),
+  offset:*optional* (will default to `0`),
    limit:*optional* (will default to `null`),
- getAttributes: *required* (if not specified, will default to wildcard ["*"]);
+  getAttributes: *required* (if not specified, will  default to wildcard `["*"]`);
 
 - method: `csvUrlLoad()` | options : Type- `Object` 
   schema:  *required*,
