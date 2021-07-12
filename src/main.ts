@@ -3,7 +3,7 @@ import axios from "axios";
 interface HarperManager {
   host: string;
   key: string;
-  schema: string;
+  schema?: string;
 }
 
 class HarperManager {
