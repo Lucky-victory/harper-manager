@@ -1,12 +1,12 @@
 import axios from "axios";
 
-interface HarperManager {
+export interface HarperManager {
   host: string;
   key: string;
   schema?: string;
 }
 
-class HarperManager {
+export class HarperManager {
   constructor(_options: object) {
     interface Options {
       host: string;

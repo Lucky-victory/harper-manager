@@ -1,11 +1,15 @@
 {
   "name": "harper-manager",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Unofficial node-js module for managing harperdb database",
-  "main": "dist/main.min.js",
+  "main": "lib/harper-manager.js",
+  "types": "lib/harper-manager.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "rm ./lib/**  && tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",

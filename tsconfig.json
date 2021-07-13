@@ -1,7 +1,27 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "noImplicitAny":false,
-    "strictNullChecks":false
-  }
+    
+     "incremental": true,    
+    "target": "es5",                        
+    "module": "commonjs",
+    "lib":["es5","es2015","es2016"],                 
+     "allowJs": true,      
+     "checkJs": true,               
+    "declaration": true, 
+     "inlineSourceMap": true,  
+     "outDir": "./lib",
+    "strict": true, 
+    "noImplicitAny": false,
+     "strictNullChecks": false,  
+    "strictFunctionTypes": true,
+     "noImplicitThis": true,
+     "alwaysStrict": true,     
+     "allowSyntheticDefaultImports": true, 
+     "esModuleInterop": true,                    
+    "allowUmdGlobalAccess": true,                  
+     "forceConsistentCasingInFileNames": true ,
+     "moduleResolution":"node" 
+  },
+  "include":["src/**/*"],
+  "exclude":["node_modules"]
 }

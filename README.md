@@ -1,5 +1,5 @@
 # Harper Manager
-An Unofficial node-js module to manage your [haperdb](https://haperdb.io) database in a simplified way.
+ Unofficial node-js module to manage your [haperdb](https://haperdb.io) database in a simplified way.
 
 ## Usage
 Using **Harper Manager** is very easy,
@@ -15,7 +15,7 @@ install the package using
 
 require it in your app , and instantiate it using `new` keyword, 
 ```
-var HarperManager=require("harper-manager");
+var { HarperManager } =require("harper-manager");
 
 var options={
    host:process.env.db_host,  /* your host url, ex: http://localhost:9925 or https://xxxxxx.harperdbcloud.com */,
