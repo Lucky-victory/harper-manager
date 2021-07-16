@@ -1,5 +1,5 @@
 # Harper Manager
- Unofficial node-js module to manage your [haperdb](https://haperdb.io) database in a simplified way.
+Unofficial node-js module to manage your [haperdb](https://haperdb.io) database in a simplified way.
 
 ## Usage
 Using **Harper Manager** is very easy,
@@ -14,8 +14,14 @@ install the package using
  
 
 require it in your app , and instantiate it using `new` keyword, 
-```
-var { HarperManager } =require("harper-manager");
+
+```js
+
+var { HarperManager }=require("harper-manager");
+
+or 
+// ES6 import
+import { HarperManager } from "harper-manager";
 
 var options={
    host:process.env.db_host,  /* your host url, ex: http://localhost:9925 or https://xxxxxx.harperdbcloud.com */,
@@ -24,21 +30,27 @@ var options={
        //schema is optional, but if you include it
     // HarperManager will create it for you if it doesn't exist yet.
 
-   schema: "dog"
+   schema: "pets"
 }
 var myDB = new HarperManager(options);
 
 
 ```
 Now you can start using it to perform every operation.
-```
+
+```js
+
 myDB.createSchema("pets") ;
+
 myDB.createTable({schema:"pets",table:"cats"}) ;
+
+myDB.insert({schema:"pets",table:"cats",records:[{id:1,dog_name:"smiley",age:3}]})
+
 ```
 
 ## what you can do with HarperManager
 - get the structure of your database using the `.describeDB()` method.
-- create schema using the `.createSchema(schema)` method.
+- create schema using the ` .createSchema(schema)` method.
 - drop schema using the `.dropSchema(schema)` method.
 - describe schema using the `.describeSchema(schema)` method.
 - create table using the `.createTable(options)` method.
@@ -73,71 +85,65 @@ myDB.createTable({schema:"pets",table:"cats"}) ;
 
 - method: `describeSchema()` | param : Type- `string` the name of the schema you want to describe.
  
-  
 - method: `createTable()` | options : Type- `Object` 
- schema:  *required*,
-  table: *required*,
-  hashAttribute: *required* (if not specified, will default to id).
+  - schema:  *required* ,
+  - table: *required*
+  - hashAttribute: *required* (if not specified, will default to id).
 
 - method: `dropTable()` | options : Type- `Object` 
- schema:  *required*,
-  table: *required*.
+  - schema:  *required*,
+  - table: *required*.
   
-  - method: `describeTable()` | options : Type- `Object` 
- schema:  *required*,
-  table: *required*.
+- method: `describeTable()` | options : Type- `Object` 
+  - schema:  *required*,
+  - table: *required*.
 
 - method: `insert()` | options : Type- `Object` 
-  schema:  *required*,
-  table: *required*,
-  records:  *required* .
+  - schema:  *required*
+  - table: *required*
+  - records:  *required* `
 
 - method: `delete()` | options : Type- `Object` 
-  schema:  *required*,
-  table: *required*,
-  hashValues: *required*.
+   - schema:  *required*,
+   - table: *required*,
+   - hashValues: *required*.
 
 - method: `update()` | options : Type- `Object` 
-  schema:  *required*,
-  table: *required*,
-  records: *required*.
+   - schema:  *required*,
+   - table: *required*,
+   - records: *required*.
 
 - method: `upsert()` | options : Type- `Object` 
-  schema:  *required*,
-  table: *required*,
-  records: *required*.
+  - schema:  *required*,
+  - table: *required*,
+  - records: *required*.
 
 - method: `searchByHash()` | options: Type- `Object` 
-  schema:*required*,
-  table: *required*,
- hashValues:*required*,
- getAttributes: *required* (if not specified, will default to wildcard `["*"]``).
+  - schema:*required*,
+  - table: *required*,
+  - hashValues:*required*,
+  - getAttributes: *required* (if not specified, will default to wildcard `["*"]``).
 
 - method: `searchByValue()` | options: Type- `Object`  
-  schema:*required*,
-  table: *required*,
- searchValue:*required*,
-  searchAttribute:*required*,
- getAttributes: *required* (if not specified, will default to wildcard `["*"]`).
+  - schema:*required*,
+  - table: *required*,
+  - searchValue:*required*,
+  - searchAttribute:*required*,
+  - getAttributes: *required* (if not specified, will default to wildcard `["*"]`).
 
 - method: `searchByConditions()` | options: Type- `Object`  
-  schema:*required*,
-  table: *required*,
-  operator: *optional* (will default to `"and"`)
- offset:*optional* (will default to `0`),
-   limit:*optional* (will default to `null`),
- getAttributes: *required* (if not specified, will default to wildcard ["*"]);
+  - schema:*required*,
+  - table: *required*,
+  - operator: *optional* (will default to `"and"`)
+  - offset:*optional* (will default to `0`),
+  - limit:*optional* (will default to `null`),
+  - getAttributes: *required* (if not specified, will default to wildcard ["*"]);
 
 - method: `csvUrlLoad()` | options : Type- `Object` 
-  schema:  *required*,
-  table: *required*,
-  csvUrl: *required*.
-
-
-## Future Versions.
- In future versions, **HarperManager** will include more methods and options.
-
+  - schema:  *required*,
+  - table: *required*,
+  - csvUrl: *required*.
 
 ## A little story.
 
-During the hashnode-harperdb hackathon a while ago, i needed a simplified way to handle my harperdb instance but couldn't find any, i was stuck in repeating same code ( including authorization multiple times, etc), this made me lost interest on the hackathon, but then i still needed to use harperdb for other projects, this was when i thought about building a module to handle those request in a simplified way, the initial aim was for personal use but then i realized others maybe facing same challenge, which was why i decided to make it available to the public.
+During the hashnode-harperdb hackathon a while ago, i needed a simplified way to handle my harperdb instance but couldn't find any, i was stuck in repeating same code ( including authorization multiple times, etc), this made me lost interest on the hackathon, but then i still needed to use harperdb for other projects, this was when i thought about building a module to handle those request in a simplified way, the initial aim was for personal use but then i realized others maybe facing same challenge, which was why i decided to make it available to the public

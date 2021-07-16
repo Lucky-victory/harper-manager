@@ -5,6 +5,7 @@ export interface HarperManager {
 }
 export declare class HarperManager {
     constructor(_options: object);
+    private headers;
     private init;
     describeDB(): Promise<any>;
     describeSchema(_schema: string): Promise<any>;
